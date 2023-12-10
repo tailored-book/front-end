@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Routes/routers";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme/theme";
+import media from "./styles/media/media";
+import { GlobalStyle } from "./styles/global/GlobalStyle";
 function App() {
+  const mode = "light";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={{ ...theme, ...media, mode }}>
+      <GlobalStyle />
+      <RouterProvider router={router}></RouterProvider>
+    </ThemeProvider>
   );
 }
 
